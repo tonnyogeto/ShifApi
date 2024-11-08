@@ -1,5 +1,6 @@
 package com.splash.ShifApi.hospitalVisits.model;
 
+import com.splash.ShifApi.infrastructure.entityutils.Identifiable;
 import com.splash.ShifApi.users.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name="hospital_visits")
-public class HospitalVisit {
+public class HospitalVisit extends Identifiable {
 
     @ManyToOne
     @JoinColumn(name="user_id")

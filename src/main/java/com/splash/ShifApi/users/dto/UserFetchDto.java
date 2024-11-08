@@ -7,6 +7,7 @@ public class UserFetchDto {
     private String name;
     private String idNo;
     private byte[] image;
-
-
 }
+
+
+

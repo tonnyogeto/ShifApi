@@ -1,6 +1,7 @@
 package com.splash.ShifApi.users.model;
 
 
+import com.splash.ShifApi.infrastructure.entityutils.Identifiable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="users")
-public class User {
+public class User extends Identifiable {
 
     @Column(name="name")
     private String name;
