@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 
 @Getter
 @Setter
@@ -20,8 +22,8 @@ public class HospitalVisit {
     @JoinColumn(name="user_id")
     private User user;
 
-
-
+    @Column(name="date")
+    private Date currentDate= new Date();
 
 
 }
