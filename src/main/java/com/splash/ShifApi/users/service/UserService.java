@@ -66,7 +66,7 @@ public class UserService {
 
     }
 
-    private UserFetchDto convertToDto(User u) {
+    public static UserFetchDto convertToDto(User u) {
         UserFetchDto dto =new UserFetchDto();
         dto.setName(u.getName());
         dto.setIdNo(u.getIdNo());

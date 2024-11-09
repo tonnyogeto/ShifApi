@@ -24,7 +24,7 @@ public class HospitalVisit extends Identifiable {
     private User user;
 
     @Column(name="date")
-    private Date currentDate= new Date();
+    private Date currentDate= new Date(System.currentTimeMillis());
 
 
 }

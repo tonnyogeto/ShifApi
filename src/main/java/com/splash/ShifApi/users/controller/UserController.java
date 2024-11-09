@@ -3,11 +3,8 @@ package com.splash.ShifApi.users.controller;
 import com.splash.ShifApi.users.dto.UserCreationDto;
 import com.splash.ShifApi.users.dto.UserFetchDto;
 import com.splash.ShifApi.users.service.UserService;
-import lombok.Getter;
-import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
