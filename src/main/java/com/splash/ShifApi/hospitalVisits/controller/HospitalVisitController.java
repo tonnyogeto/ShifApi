@@ -44,7 +44,7 @@ public class HospitalVisitController {
 
     }
 
-    @PutMapping("/visitId")
+    @PutMapping("/{visitId}")
     public ResponseEntity<?> updateHospitalVisit(
             @PathVariable("visitId") Integer visitId,
             @RequestBody HospitalVisitCreationDto dto
@@ -54,7 +54,7 @@ public class HospitalVisitController {
                 new ApiResponse<>("success", null));
     }
 
-    @DeleteMapping("/visitId")
+    @DeleteMapping("/{visitId}")
     public ResponseEntity<?> deleteHospitalVisit(
             @PathVariable("visitId") Integer visitId
     ){
