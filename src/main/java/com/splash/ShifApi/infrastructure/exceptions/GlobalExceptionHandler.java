@@ -9,14 +9,33 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler (ResourceNotFoundException.class)
-    public ResponseEntity<?> handleResourceNotFoundException(
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<?> handleBadRequestException(
+            BadRequestException ex
+    ){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                new ApiResponse<>(ex.getMessage(),null)
+        );
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public  ResponseEntity<?> handleResourceNotFoundException(
             ResourceNotFoundException ex
     ){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                new ApiResponse<>(ex.getMessage(), null)
+                new ApiResponse<>(ex.getMessage(),null)
         );
     }
+
+    @ExceptionHandler(ConflictException.class)
+    public  ResponseEntity<?> handleConflictException(
+            ConflictException ex
+    ){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(
+                new ApiResponse<>(ex.getMessage(),null)
+        );
+    }
+
 
 
 }

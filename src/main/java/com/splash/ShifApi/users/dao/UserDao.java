@@ -1,4 +1,4 @@
-package com.splash.ShifApi.users.controller.dao;
+package com.splash.ShifApi.users.dao;
 
 import com.splash.ShifApi.users.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

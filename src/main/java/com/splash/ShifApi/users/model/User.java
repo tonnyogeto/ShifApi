@@ -1,7 +1,5 @@
 package com.splash.ShifApi.users.model;
 
-
-import com.splash.ShifApi.infrastructure.entityutils.Identifiable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +12,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="users")
-public class User extends Identifiable {
+public class User{
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence_generator")
+    @SequenceGenerator(name = "user_sequence_generator", sequenceName = "users_seq", allocationSize = 1)
+    private Integer id;
+
 
     @Column(name="name")
     private String name;
@@ -22,8 +26,8 @@ public class User extends Identifiable {
     @Column(name="id_number")
     private String idNo;
 
-    @Lob
+
     @Column(name="image")
-    private byte[] image;
+    private String imagePath;
 
 }

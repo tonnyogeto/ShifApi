@@ -1,7 +1,7 @@
 package com.splash.ShifApi.users.service;
 
 import com.splash.ShifApi.infrastructure.exceptions.ResourceNotFoundException;
-import com.splash.ShifApi.users.controller.dao.UserDao;
+import com.splash.ShifApi.users.dao.UserDao;
 import com.splash.ShifApi.users.dto.UserCreationDto;
 import com.splash.ShifApi.users.dto.UserFetchDto;
 import com.splash.ShifApi.users.model.User;
@@ -17,12 +17,14 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
+
 
     public List<UserFetchDto> getAllUsers() {
         List<User> allUsers=  userDao.findAll();
 
-        List<UserFetchDto> dtos =new ArrayList<>();
+        List<UserFetchDto> dtos = new ArrayList<>();
+
         for(User u: allUsers){
             UserFetchDto dto =convertToDto(u);
             dtos.add(dto);
@@ -41,7 +43,7 @@ public class UserService {
         Optional<User> userOptional =userDao.findById(userId);
         if(userOptional.isPresent()){
             return userOptional.get();
-        }else{
+        } else{
             throw new ResourceNotFoundException(String.format("User with id %d not found", userId));
         }
     }
@@ -51,7 +53,7 @@ public class UserService {
         User user = new User();
         user.setName(dto.getName());
         user.setIdNo(dto.getIdNo());
-        user.setImage(dto.getImage());
+        user.setImagePath(dto.getImagePath());
         userDao.save(user);
     }
 
@@ -60,7 +62,7 @@ public class UserService {
     public void updateUser(UserCreationDto dto, Integer userId) {
         User user = getPersonByIdOrElseThrow(userId);
         user.setName(dto.getName());
-        user.setImage(dto.getImage());
+        user.setImagePath(dto.getImagePath());
         user.setIdNo(dto.getIdNo());
         userDao.save(user);
 
@@ -70,7 +72,7 @@ public class UserService {
         UserFetchDto dto =new UserFetchDto();
         dto.setName(u.getName());
         dto.setIdNo(u.getIdNo());
-        dto.setImage(u.getImage());
+        dto.setImagePath(u.getImagePath());
         return dto;
     }
 

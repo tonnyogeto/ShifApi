@@ -1,7 +1,6 @@
 package com.splash.ShifApi.claims.model;
 
 import com.splash.ShifApi.hospitalVisits.model.HospitalVisit;
-import com.splash.ShifApi.infrastructure.entityutils.Identifiable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="claims")
-public class Claim extends Identifiable {
+public class Claim {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "claim_sequence_generator")
+    @SequenceGenerator(name = "claim_sequence_generator", sequenceName = "claims_seq", allocationSize = 1)
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
