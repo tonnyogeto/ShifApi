@@ -22,7 +22,7 @@ public class HospitalVisitService {
     HospitalVisitDao hospitalVisitDao;
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
 
     public List<HospitalVisitFetchDto> getAllHospitalVisits() {
@@ -47,12 +47,12 @@ public class HospitalVisitService {
         if(hospitalVisitOptional.isPresent()){
             return hospitalVisitOptional.get();
         }else{
-            throw new ResourceNotFoundException(String.format("Claim with id %d not found", visitId));
+            throw new ResourceNotFoundException(String.format("Visit with id %d not found", visitId));
         }
     }
 
 
-    private static HospitalVisitFetchDto convertToDto(HospitalVisit h) {
+    public static HospitalVisitFetchDto convertToDto(HospitalVisit h) {
         HospitalVisitFetchDto dto = new HospitalVisitFetchDto();
         dto.setCurrentDate(h.getCurrentDate());
         User user = h.getUser();
@@ -82,10 +82,7 @@ public class HospitalVisitService {
     public void updateHospitalVisit(HospitalVisitCreationDto dto, Integer visitId) {
         HospitalVisit visit =getVisitByIdOrElseThrow(visitId);
         User user=userService.getPersonByIdOrElseThrow(dto.getUserId());
-
-        if(visit == null){
-            return;
-        }
         visit.setUser(user);
+        hospitalVisitDao.save(visit);
     }
 }
