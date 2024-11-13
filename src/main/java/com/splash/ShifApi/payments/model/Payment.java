@@ -3,9 +3,18 @@ package com.splash.ShifApi.payments.model;
 
 import com.splash.ShifApi.users.model.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name="payments")
 public class Payment{
     @Id
     @Column(name = "id")
@@ -20,10 +29,10 @@ public class Payment{
     @JoinColumn(name="user_id")
     private User user;
 
-    @Column(name="amount")
+    @Column(name="amount_paid")
     private float amount;
 
     @Column(name="date")
-    final Date currentDate = new Date();
+    private Date dateOfPayment = new Date();
 
 }
