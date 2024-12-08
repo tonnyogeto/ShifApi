@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class UserPaymentPlanFetchDto {
+    private Integer id;
     private UserFetchDto user;
     private float Amount;
     private PaymentPlan paymentPlan;

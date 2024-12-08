@@ -70,6 +70,7 @@ public class UserService {
 
     public static UserFetchDto convertToDto(User u) {
         UserFetchDto dto =new UserFetchDto();
+        dto.setId(u.getId());
         dto.setName(u.getName());
         dto.setIdNo(u.getIdNo());
         dto.setImagePath(u.getImagePath());

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class ClaimFetchDto {
-
+    private Integer id;
     private Status status;
     private HospitalVisitFetchDto visit;
 }

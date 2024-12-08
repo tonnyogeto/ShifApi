@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class PaymentFetchDto {
+    private Integer id;
     private UserFetchDto user;
     private float amount;
     private Date dateOfPayment = new Date();

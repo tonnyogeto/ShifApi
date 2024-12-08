@@ -4,6 +4,7 @@ import com.splash.shifapi.infrastructure.Response.ApiResponse;
 import com.splash.shifapi.users.dto.UserCreationDto;
 import com.splash.shifapi.users.dto.UserFetchDto;
 import com.splash.shifapi.users.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -20,6 +22,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<?> getAllUsers(){
+        log.info("Fetching Users");
         List<UserFetchDto>users =userService.getAllUsers();
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ApiResponse<>("success",users));

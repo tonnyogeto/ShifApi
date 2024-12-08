@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class HospitalVisitFetchDto {
+    private Integer id;
     private UserFetchDto user;
     private Date currentDate= new Date();
 }
