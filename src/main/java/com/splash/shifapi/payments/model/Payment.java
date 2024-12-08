@@ -33,6 +33,6 @@ public class Payment{
     private float amount;
 
     @Column(name="date")
-    private Date dateOfPayment = new Date();
+    private Date paymentDate = new Date();
 
 }
